@@ -28,8 +28,8 @@ public class WordListAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
-        return mWordList.get(position);
+    public String getItem(int position) {
+        return mWordList.get(position).getWord().toString();
     }
 
     @Override
@@ -39,13 +39,11 @@ public class WordListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View v = View.inflate(mContext, R.layout.activity_word, null);
-        TextView tvWord = (TextView) v.findViewById(R.id.TV4);
-        TextView tvDes = (TextView) v.findViewById(R.id.TV6);
+        View v = View.inflate(mContext, R.layout.itemlistview, null);
+        TextView word = (TextView) v.findViewById(R.id.word);
 
-        tvWord.setText(mWordList.get(position).getWord());
-        tvDes.setText(mWordList.get(position).getDescribe());
-
+        if (mWordList.get(position).getWord() != null)
+            word.setText(mWordList.get(position).getWord().toString());
         return v;
     }
 }
